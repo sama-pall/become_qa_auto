@@ -15,6 +15,7 @@ def test_user_not_exists(github_api):
 
     assert r['message'] == 'Not Found'
 
+
 @pytest.mark.api
 def test_repo_can_be_found(github_api):
     r = github_api.search_repo('become-qa-auto')
@@ -22,11 +23,13 @@ def test_repo_can_be_found(github_api):
     assert r['total_count'] == 55
     assert 'become-qa-auto' in r['items'][0]['name']
 
+
 @pytest.mark.api
 def test_repo_cannot_be_found(github_api):
     r = github_api.search_repo('abs_crazy_thing')
 
     assert r['total_count'] == 0
+
 
 @pytest.mark.api
 def test_repo_with_single_char(github_api):
