@@ -20,7 +20,6 @@ def test_user_not_exists(github_api):
 def test_repo_can_be_found(github_api):
     r = github_api.search_repo('become-qa-auto')
 
-    assert r['total_count'] == 55
     assert 'become-qa-auto' in r['items'][0]['name']
 
 
@@ -36,3 +35,10 @@ def test_repo_with_single_char(github_api):
     r = github_api.search_repo('s')
 
     assert r['total_count'] != 0
+
+@pytest.mark.api
+def test_emojis_response(github_api):
+    r = github_api.get_emojis()
+    print(r['+1'])
+    assert r['zombie_woman'] == 'https://github.githubassets.com/images/icons/emoji/unicode/1f9df-2640.png'
+

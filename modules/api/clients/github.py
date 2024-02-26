@@ -13,3 +13,8 @@ class GitHub:
             params={'q': name}
         )
         return r.json()
+
+    def get_emojis(self):
+        r = requests.get('https://api.github.com/emojis')
+
+        return r.j
